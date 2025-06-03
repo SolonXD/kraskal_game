@@ -41,4 +41,6 @@ class City:
         other_city.connected_cities.discard(self)
 
     def get_distance_to(self, other_city):
-        return ((self.x - other_city.x) ** 2 + (self.y - other_city.y) ** 2) ** 0.5 
+        dx = self.x - other_city.x
+        dy = self.y - other_city.y
+        return round(((dx ** 2 + dy ** 2) ** 0.5), 1) 

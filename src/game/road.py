@@ -39,7 +39,7 @@ class Road:
 
         distance = int(self.city1.get_distance_to(self.city2))
         font = pygame.font.Font(None, 24 if highlight else 20)
-        text_color = (0, 0, 0) if highlight else (*BLACK, alpha)
+        text_color = (255, 0, 0) if highlight else (*BLACK, alpha)
         text = font.render(str(distance), True, text_color)
         
         mid_x = (self.city1.x + self.city2.x) // 2

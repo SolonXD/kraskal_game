@@ -93,8 +93,8 @@ def main():
             font = pygame.font.Font(None, 24)
             hint1 = font.render("ПКМ - вернуться в меню", True, (0, 0, 0))
             hint2 = font.render("ЛКМ - соединить города", True, (0, 0, 0))
-            screen.blit(hint1, (10, WINDOW_HEIGHT - 50))  
-            screen.blit(hint2, (10, WINDOW_HEIGHT - 25)) 
+            screen.blit(hint1, (WINDOW_WIDTH - hint1.get_width() - 10, WINDOW_HEIGHT - 50))
+            screen.blit(hint2, (WINDOW_WIDTH - hint2.get_width() - 10, WINDOW_HEIGHT - 25))
 
         pygame.display.flip()
 

@@ -1,5 +1,5 @@
 import pygame
-from constants import GRAY, LIGHT_GRAY, BLACK, BUTTON_FONT_SIZE
+from src.constants import GRAY, LIGHT_GRAY, BLACK, BUTTON_FONT_SIZE
 
 class Button:
     def __init__(self, x, y, width, height, text, font_size=BUTTON_FONT_SIZE):
