@@ -1,5 +1,5 @@
 import pygame
-from constants import (
+from src.constants import (
     WINDOW_WIDTH, WINDOW_HEIGHT, WHITE,
     BUTTON_WIDTH, BUTTON_HEIGHT
 )

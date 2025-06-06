@@ -42,29 +42,29 @@ class Level:
                 self.roads.append(Road(self.cities[i], self.cities[j]))
 
     def _calculate_optimal_solution(self):
+        # Сбросим флаги оптимальности
+        for road in self.roads:
+            road.is_optimal = False
+        self.optimal_length = 0
+        # Реализуем локальный union-find
+        parent = {city: city for city in self.cities}
+        def find(city):
+            while parent[city] != city:
+                parent[city] = parent[parent[city]]
+                city = parent[city]
+            return city
+        def union(city1, city2):
+            root1 = find(city1)
+            root2 = find(city2)
+            if root1 != root2:
+                parent[root2] = root1
+                return True
+            return False
         sorted_roads = sorted(self.roads, key=lambda x: x.get_length())
         for road in sorted_roads:
-            if not self._would_create_cycle(road):
+            if union(road.city1, road.city2):
                 road.is_optimal = True
                 self.optimal_length += road.get_length()
-
-    def _would_create_cycle(self, road):
-        visited = set()
-        
-        def dfs(city, target, parent=None):
-            if city == target and parent is not None:
-                return True
-            if city in visited:
-                return False
-                
-            visited.add(city)
-            for connected_city in city.connected_cities:
-                if connected_city != parent:
-                    if dfs(connected_city, target, city):
-                        return True
-            return False
-
-        return dfs(road.city1, road.city2)
 
     def handle_click(self, pos):
         if not (self.game_area['left'] <= pos[0] <= self.game_area['right'] and
